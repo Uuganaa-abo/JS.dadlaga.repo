@@ -1,0 +1,61 @@
+3 toonii ihiig ol 
+
+code:
+1. a,b,c 3 toondoo huwisagch zarlana 
+2. a,b,c 3 huwisagchid utga onoon 
+3. a huwisagchiig b tei haritsuulna
+4. herew a ni ih bol c huwisagchtai haritsuulna
+5. a ni ih bol a g hewlene 
+6. herew c ni ih bol c hewlene
+7. herew b ih bol c huwisagchtai haritsuulna
+8. herew b ni ih bol b -g hewlene
+9. herew c ni ih bol c -g hewlene
+
+
+code:
+1. a,b,c,d 4 toondoo huwisagch zarlana
+2. a,b,c,d 4 toondoo utga onoon
+3. a -g b tei haritsuulna 
+4. herew a ni ih bol c tei haritsuul ni
+5. herew a ni ih bol d tei haritsuul ni 
+6. a hamgiin ih ni bna
+7. b huwisagchiig c tei haritsuul ni 
+8. b ni ih bol d tei haritsuul ni 
+9. herew d ni ih bwal  
+10. c -g d huwisagchtai haritsuulna 
+11. d ni ih bol 
+12. iheesee 2 dah ni b huwisagch bna.
+
+13. a -g b tei haritsuulna
+14. herew b ni ih b-g c tei haritsuiulna
+15. herew b ni ih bol d tei haritsuul ni 
+16. b ni hamgiin ih bna
+17. a-g c tei haritsuyulna 
+18. c ni ih bol c-g d tei haritsuulna
+19. herew c ni ih bol c ni iheesee 2 dah huwisagch bna.
+20. eswel a-g c tei haritsuulaad a ih bol 
+21. a-g d tei haritsuul ni 
+22. herew a ni ihesee 2dahi bna.
+23. herew d ni ih bol d ni iseesee 2 dahi ni bna.
+
+24. herew a-g b tei haritsuulaad 
+25.b ni ih bol
+26. b -g c tei haritsuul ni
+27. c ni ih bol 
+28. c-g d tei haritsuulna
+29. c ni ih bol c hamgiin ih too bna.
+30. a-g c tei haritsuulaad a ih bol
+31. a-g d tei haritsuul ni 
+32. a ni ih bol a iheesee 2 dahi too 
+33. eswel a-g c tei haritsuulaad 
+34. c ih bol c g d tei haritsuulna 
+35. d ih bol d ni iheesee 2dahi too bna.
+36. c-g d tei haritsuulahad 
+37. c ni ih bol c ni iheesee 2 dahi too bna.
+
+oniig oghod ondor jil mon uu bish uu?
+
+1. a too tegsh too yu, sondgoi yu
+- a too tegsh bol true
+- a too sondgoi bol false 
+2. 3 toog bagaas mni ihruu erembel
