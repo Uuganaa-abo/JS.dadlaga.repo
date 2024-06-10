@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <input />
+      <button onclick="location.reload(); console.log('Hello')">Restart</button>
+      <pre>
+        <code id="output"></code>
+       </pre>
+    </main>
+
+    <script>
+      const n = prompt("n too oruulna uu:");
+      const output = document.getElementById("output");
+      let sum = 0;
+      for (let i = 1; i <= n; i++) {
+        sum = sum + i;
+        sum += i;
+        output.innerText += i + "\n";
+      }
+      output.innerText += "1 - N тооний нийлбэр:" + sum;
+      //   output.innerText = "Hello"
+      //   alert(sum)
+    </script>
+  </body>
+</html>
