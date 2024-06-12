@@ -18,23 +18,27 @@
     <script>
           function run() {
             const n = getNumberValueFromInput();
-            const sum = multitable(n);
+            const sum = solution(n);
             print(sum);
           }
-
-        function multitable(n) {
+          function solution(n){
           let result = "";
-          for (let k=1; k<=n; k++) {
-            for (let i = 1; i <= 10; i++) {
-                const value= String(i*k);
-                result += value.padStart(3, " ")+" ";
+          for (let i = 1; i <=n; i++){
+            result = result + generateStars(i);
+            result= result+ "\n";
           }
-          result = result + "\n";
+          return result;
         }
-        return result;
+
+        function generateStars(numberOfStars) {
+          let stars = " ";
+          for (let i=0; i<numberOfStars; i++){
+            stars = stars+ "*";
+          }
+          return stars;
       }
 
-      function getNumberValueFromInput() {
+          function getNumberValueFromInput() {
             const inputString = document.getElementById("input").value;
             const n = Number(inputString);
             return n;

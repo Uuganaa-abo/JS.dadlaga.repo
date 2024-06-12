@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <input id="input" placeholder="Enter value..." />
+      <button onclick="run();">Solve</button>
+      <pre>
+          <code id="output"></code>
+        </pre>
+    </main>
+
+    <script>
+      function run() {
+        const n = getNumberValueFromInput();
+        const sum = multitable(n);
+        print(sum);
+      }
+
+      function multitable(n) {
+        // console.log("working");
+        let result = "";
+        for (let k = 1; k <= n; k++) {
+          for (let i = 1; i <= k; i++) {
+            result += "i"+ " ";
+          }
+          result = result + "\n";
+        }
+        return result;
+      }
+
+      function getNumberValueFromInput() {
+        const inputString = document.getElementById("input").value;
+        const n = Number(inputString);
+        return n;
+      }
+      function print(output) {
+        document.getElementById("output").innerText = output;
+      }
+    </script>
+  </body>
+</html>
