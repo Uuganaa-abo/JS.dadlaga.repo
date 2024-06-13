@@ -31,6 +31,28 @@
         return result;
       }
 
+      function generateSpace(count) {
+        let space = "";
+        for (i = 0; (i = count); i++) {
+          space = space + "-";
+        }
+        return space;
+      }
+
+      let result = "";
+
+      for (let i = 1; i <= n; i++) {
+        result = result + generateSpace(n - 1);
+        if (i === 1 || i === 2 || i === n) {
+          result = result + generateStars(i);
+        } else {
+          result = result + "*-";
+          result = result + generateSpace(2 * i - 4);
+          result = result + "*-";
+        }
+        result = result + "\n";
+      }
+
       function generateStars(numberOfStars) {
         let stars = " ";
         for (let i = 0; i < numberOfStars; i++) {

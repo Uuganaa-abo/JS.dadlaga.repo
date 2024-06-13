@@ -1,0 +1,44 @@
+<script>
+  const name = "Bold";
+  const names = ["bayraa", "Delger", "Urlee", "Zolboo"];
+
+//   name.push("Bold") // add last
+//   names.pop();  //remove last
+//   names.shift(); // remove first
+//   names.unshift(); //add first 
+
+  names[2];
+
+  const she = "Urlee";
+
+  const len = names.length;
+
+  for (let i=0; i<len; i++) {
+    if (names[i]=== she) {
+        console.log(i);
+        break;
+    }
+  }
+// indexof 
+//   const position = name.indexof("Urlee");
+//   console.log(position)
+
+//   //findIndex 
+//   const ages = [21, 33, 35, 16, 19, 12, 13];
+
+//   const index = ages.findIndex(function(age){
+//     return age < 18;
+//   });
+//   console.log(index);
+
+  //filter 
+  const ages = [21, 33, 35, 16, 19, 12, 13];
+  
+  const minors = ages.filter(function(age){
+    return age < 18;
+  });
+  console.log(minors);
+
+
+//   console.log(names[2]);
+</script>
