@@ -1,13 +1,59 @@
 <script>
+  //1
+  const arrayOfNumbers = [43, 56, 23, 89, 88, 90, 652, 15, 290, 11];
+  const len = arrayOfNumbers.length;
+  let sum = 0;
+  for (let i = 0; i < len; i++) {
+    sum = sum + arrayOfNumbers[i];
+  }
+  console.log(sum); // array list sum
 
-    const arrayOfNumbers = [43, 56, 23, 89, 88, 90, 652, 15, 290, 11]
-    const len = arrayOfNumbers.length;
-    let sum = 0;
-    for(let i=0; i=len; i++){
-        sum=sum+i;
-        console.log(sum)
+  //2
+
+  arrayOfNumbers.push(10);
+  arrayOfNumbers.unshift(20);
+
+  console.log(arrayOfNumbers);
+
+  //3
+
+  let max = arrayOfNumbers[0];
+  for (let i = 0; i < arrayOfNumbers.length; i++) {
+    if (arrayOfNumbers > max) {
+      max = arrayOfNumbers[i];
     }
+  }
+  console.log("The biggest numberis:", max);
 
+  //4
 
+  let evenNumbers = 0;
+  let oldNumbers = 0;
+  for (let i = 0; i < arrayOfNumbers.length; i++) {
+    if (arrayOfNumbers[i] % 2 === 0) {
+      evenNumbers++;
+    } else {
+      oldNumbers++;
+    }
+  }
+  console.log("The numnber of even is:", evenNumbers);
+  console.log("The numnber of odd is:", oldNumbers);
 
+  //5
+  const studentsAges = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+  for (let i = 0; i < studentsAges.length; i++) {
+    studentsAges[i] += 5;
+  }
+  console.log(studentsAges);
+
+  //6
+
+  const names = ["Yunden", "Horolmaa", "Balgan", "Nansalmaa"];
+  let maxName = names[0];
+  for (let i = 0; i < names.length; i++) {
+    if (names[i].length > maxName.length) {
+      maxName = names[i];
+    }
+  }
+  console.log("Longest bname is:", maxName);
 </script>
