@@ -1,4 +1,60 @@
-.header{
-    margin: 0 auto;
+#main {
+    width: 100%;
+    min-height: 100vh;
+    padding: 10px;
+    background-color: linear-gradient(135deg, #152677, #4e085f);
+}
+
+.header {
+    max-width: 900px;
     background-color: lightseagreen;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+.header>h1 {
+    font-family: Helvetica Neue;
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 36px;
+}
+
+.content-container {
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+#content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 20px;
+    font-family: Helvetica Neue;
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 36px;
+}
+
+#input {
+    display: flex;
+    margin-top: 20px;
+    margin: auto;
+    width: 400px;
+    height: 50px;
+    padding: 5px;
+}
+
+#add {
+    width: 150px;
+    background-color: rgb(9, 245, 29);
+    color: white;
+    font-weight: bold;
+    font-size: 28px;
+    height: 50px;
+    margin-left: 800px;
 }
