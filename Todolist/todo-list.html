@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css" />
+  </head>
+  <body>
+    <section>
+      <div class="header">
+        <h1 id="title">TO DO LIST</h1>
+      </div>
+      <div class="content-conatiner">
+        <div id="content"></div>
+      </div>
+
+      <input id="input" />
+      <button onclick="addTask();">Add task</button>
+
+      <script>
+        const headingE1 = document.getElementById("title");
+        console.log(headingE1.innerText);
+
+        const content = document.getElementById("content");
+
+        function addTask() {
+          const input = document.getElementById("input");
+          console.log(input.value);
+
+          const newTask = `
+                            <div class="task">
+                                <div class="task-text">
+                                    ${input.value}
+                                </div>
+                            </div>`;
+
+          content.innerHTML = content.innerHTML + newTask;
+        }
+      </script>
+    </section>
+  </body>
+</html>

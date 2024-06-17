@@ -1,34 +1,53 @@
 <script>
   //1
 
-//   function fibonacci(n) {
-//     const fib = [0, 1];
-//     for (let i = 2; i < n; i++) {
-//       fib[i] = fib[i - 1] + fib[i - 2];
-//     }
-//     return fib;
-//   }
-//   console.log(fibonacci(2));
-//   console.log(fibonacci(3));
-//   console.log(fibonacci(7));
+  //   function fibonacci(n) {
+  //     const fib = [0, 1];
+  //     for (let i = 2; i < n; i++) {
+  //       fib[i] = fib[i - 1] + fib[i - 2];
+  //     }
+  //     return fib;
+  //   }
+  //   console.log(fibonacci(2));
+  //   console.log(fibonacci(3));
+  //   console.log(fibonacci(7));
+
+  // function fibonacci(n){
+  //   const list = [];
+  //   for (let i=0; i<n; i++){
+  //     if(i===0){
+  //       list.push(0);
+  //     }else if (i===1){
+  //       list.push(1);
+  //     }else{
+  //       const newItem = list[i-1] + list[i-2];
+  //       list.push(newItem)
+  //     }
+  //   }
+  //   return list;
+  // }
+  // console.log(fibonacci(7))
 
   //2
+  function pascal(n) {
+    let output = "";
+    let prevLine = [];
+    let currentLine = [];
 
-  function solution(n){
-   let result=" ";
-   for (i=1; i<=n; i++){
-    result += result + triangle[i]
-    result = result + "\n"
-   }
-   return result;
-  }
-
- function triangle(n){
-    const fib = [1,2];
-    for(let i=2; i<n; i++){
-        fib[i] = fib[i - 1] + fib[i - 2];
+    for (let i = 0; i < n; i++) {
+      currentLine = [];
+      for (let j = 0; j < i + 1; j++) {
+        if (j === 0 || j === i) {
+          currentLine.push(1);
+        } else {
+          currentLine.push(prevLine[j] + prevLine[j - 1]);
+        }
+      }
+      prevLine = currentLine;
+      output += currentLine.join(" ");
+      output += "\n";
     }
-    return fib;
- }
- console.log(triangle(5))
+    return output;
+  }
+  console.log(pascal(10));
 </script>
