@@ -1,34 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="stylesheet" href="style.css">
-
-</head>
-
-<body>
-  <section id="main">
-    <div class="header">
-      <h1 id="title">TO DO LIST</h1>
-    </div>
-
-    <div class="content-conatiner">
-      <div id="content">
-       
+  <body>
+    <section>
+      <div class="container">
+        <div class="notification is-primary">
+          <strong>TO DO LIST</strong>
+        </div>
       </div>
 
-      <input id="input" />
-      <button id="add" onclick="addTask();">Add task</button>
+      <div id="content"></div>
 
-    </div>
-    
+      <div id="control" class="mt-6">
+        <input type="checkbox" class="completed" />
+        <input id="description" type="text" placeholder="To do ..." />
+      </div>
 
+      <div class="buttons">
+        <button
+          onclick="addTask();"
+          class="button is-primary is-rounded mx-auto"
+        >
+          ADD TASK
+        </button>
+      </div>
+    </section>
 
-    
-  </section>
-</body>
+    <script>
+      const content = document.getElementById("content");
+      content.innerHTML = " ";
 
+      function addTask() {
+        const control = document.getElementById("description");
+
+        const newTask = `
+                <div class="completed">
+                    <div class="description">
+                      <input type="checkbox"/>
+                        ${control.value}
+                    </div>
+                </div>`;
+        content.innerHTML = content.innerHTML + newTask;
+      }
+
+      
+    </script>
+  </body>
 </html>
