@@ -1,36 +1,42 @@
-@use "bulma/sass/utilities/mixins";
 
-@include mixins.mobile {
-  // Styles applied
-  // below $tablet
-}
 section{
     background-color: lightslategray;
 }
 .container{
     text-align: center;
 }
-.buttons{
+/* .buttons{
     align-items: center;
-}
+} */
 strong{
-    font-size: 50px;
+    font-size: 38px;
+}
+
+.description{
+    padding: 5px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    
+}
+#tasks{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    max-width: 960px;
+    margin: auto;
 }
 .control{
     display: flex;
     justify-content: center;
-    gap: 15px;
+
 }
-.description{
-    width: 590px;
-    padding: 5px
+.content-container{
+    width: 400px;
+
 }
 
 
-
-@use "bulma/sass/utilities/mixins";
-
-@include mixins.desktop {
-  // Styles applied
-  // above $desktop
-}

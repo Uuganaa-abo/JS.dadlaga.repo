@@ -12,24 +12,27 @@
   </head>
 
   <body>
-    <section>
-      <div class="container">
+    <section class="container column is-half is-offset-one-quarter">
+      <div class="container column is-half is-offset-one-quarter">
         <div class="notification is-primary">
           <strong>TO DO LIST</strong>
         </div>
       </div>
-
-      <div id="content"></div>
+      <div id="tasks"></div>
 
       <div id="control" class="mt-6">
-        <input type="checkbox" class="completed" />
-        <input id="description" type="text" placeholder="To do ..." />
+        <input
+          id="description"
+          class="description column is-half is-offset-one-quarter"
+          type="text"
+          placeholder="To do ..."
+        />
       </div>
 
       <div class="buttons">
         <button
-          onclick="addTask();"
-          class="button is-primary is-rounded mx-auto"
+          onclick="render();addTask();"
+          class="button is-primary is-rounded mx-auto mt-1"
         >
           ADD TASK
         </button>
@@ -37,23 +40,55 @@
     </section>
 
     <script>
-      const content = document.getElementById("content");
-      content.innerHTML = " ";
+      const tasks = document.getElementById("tasks");
+      tasks.innerHTML = "";
+
+      const deledTask = [];
 
       function addTask() {
         const control = document.getElementById("description");
-
-        const newTask = `
-                <div class="completed">
-                    <div class="description">
-                      <input type="checkbox"/>
-                        ${control.value}
-                    </div>
-                </div>`;
-        content.innerHTML = content.innerHTML + newTask;
+        deledTask.push(control.value);
+        render();
       }
 
-      
+      function deleteTask(position) {
+        if (confirm("Are u sure?")) {
+          deledTask.splice(position, 1);
+          render();
+        }
+      }
+
+      function editTask(position) {
+        const selectedItem = deledTask[position];
+        console.log("selectedItem", selectedItem);
+        const name = prompt("Edit task");
+        selectedItem = name;
+        render();
+      }
+
+      function render() {
+        let deledTaskHtml = "";
+        for (let i = 0; i < deledTask.length; i++) {
+          const oneTask = `
+                   <div class="content">
+                    <div class="content-container">
+                      <div class="is-flex is-align-items-center is-justify-content-space-between">
+                         <input type="checkbox">
+                         <div> ${deledTask[i]}</div>
+                           <div class="buttons">
+                             <button class="button is-small is-danger is-outlined" onclick="deleteTask(${i});">Delete</button>
+                             <button class="button is-small is-nfo is-ligth" onclick="editTask(${i});">Edit</button>
+                         </div>
+                       </div>
+                     </div>
+                    </div>    
+          `;
+          deledTaskHtml += oneTask;
+        }
+        document.getElementById("tasks").innerHTML = deledTaskHtml;
+      }
+
+      render();
     </script>
   </body>
 </html>
