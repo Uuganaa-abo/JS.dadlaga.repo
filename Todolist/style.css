@@ -1,13 +1,13 @@
 
-section{
+/* section{
     background-color: lightslategray;
-}
+} */
 .container{
     text-align: center;
 }
-/* .buttons{
+.buttons{
     align-items: center;
-} */
+}
 strong{
     font-size: 38px;
 }
@@ -18,25 +18,22 @@ strong{
     display: flex;
     justify-content: center;
     text-align: left;
-    
 }
 #tasks{
     display: flex;
     justify-content: center;
     flex-direction: column;
-    gap: 5px;
     align-items: center;
-    max-width: 960px;
+    max-width: 860px;
     margin: auto;
 }
-.control{
-    display: flex;
-    justify-content: center;
 
-}
 .content-container{
     width: 400px;
-
+    background-color: lightgrey;
+}
+#saveButton{
+    opacity: 1;
 }
 
 

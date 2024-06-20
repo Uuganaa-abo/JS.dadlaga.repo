@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //    let fruit = "banana";
+      //    let fruit = "apple";
+      //    if (fruit = "apple"){
+      //      console.log("Apples are red or green.")
+      //      else if( fruit = "banana"){
+      //      console.log("Bananas are yellow")
+      //    } else if (fruit = "orange"){
+      //      console.log("Oranges are orange")
+      //    }
+      //     else (fruit = 0){
+      //         console.log("unknown fruit.")
+      //     }
+      //    }
+
+        const deviceType = prompt();
+        const model = prompt();
+        switch (deviceType){
+            case "mobile":switch(model){
+                case "iphone":alert("Apple iPhone: IOS device.")
+                break;
+            case "samsung":alert("Samsung Galaxy: Android device")
+            break;
+            default:alert("Unknown phone model.")
+            }
+            break;
+            case "tablet": switch(model){
+                case "iPad":alert("Apple iPad:iOS device.")
+                break;
+                case "Galaxy Tab":alert("Samsung Galaxy Tab: Android device.")
+                break;
+                default:alert("Unknown tablet model")
+            }
+            break;
+            case "laptop": switch(model){
+                case "Macbook":alert("Apple Macbook: macOS device.")
+                break;
+                case "Dell":alert("Dell XPS: Windows device")
+                break;
+                default:("Unknown laptop model.")
+            }
+            break;
+            default:alert("unknown device type.")
+        }
+        
+
+
+      
+      
+
+      
+
+    </script>
+  </body>
+</html>
