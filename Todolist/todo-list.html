@@ -19,7 +19,7 @@
         <div class="notification is-primary">
           <strong>TO DO LIST</strong>
           <div class="columns">
-            <div class="column is-one-fifth is-2 has-background-white mx-auto my-auto"></div>
+            <div id="total" class="column is-one-fifth is-2 has-background-white mx-auto my-auto"></div>
           </div>
         </div>
       </div>
@@ -49,7 +49,8 @@
       const tasks = document.getElementById("tasks");
       tasks.innerHTML = "";
       // const object = ;
-      const deledTask = [];
+      const storage = localStorage.getItem("list");
+      const deledTask =  JSON.parse(storage) || [];
 
       function addTask() {
         const control = document.getElementById("description").value;
@@ -83,7 +84,7 @@
         render();
       }
 
-      function render() {
+      function render() { 
         let deledTaskHtml = "";
         for (let i = 0; i < deledTask.length; i++) {
           const oneTask = `
@@ -106,8 +107,18 @@
           deledTaskHtml += oneTask;
         }
         document.getElementById("tasks").innerHTML = deledTaskHtml;
+        localStorage.setItem("list",JSON.stringify(deledTask));
+     
+       let j = 0;
+       for ( let i=0; i < deledTask.length; i++){
+        if (deledTask[i].status == "done"){
+          j++;
+          
+       }
       }
-
+        document.getElementById("total").innerText = `${j}/${deledTask.length}`
+        
+    }
       render();
     </script>
   </body>
