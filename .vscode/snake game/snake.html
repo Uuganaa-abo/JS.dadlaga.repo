@@ -5,45 +5,71 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
       .area {
         background-color: rgb(199, 239, 203);
         position: relative;
       }
-      .head {
+      .part {
         width: 20px;
         height: 20px;
         background-color: black;
         position: absolute;
-        display: none;
+        border-radius: 7px;
       }
       .food {
         width: 20px;
         height: 20px;
         background-color: red;
         position: absolute;
-        top: 100px;
-        left: 100px;
+       
       }
     </style>
   </head>
   <body onkeydown="handleKeydown(event);">
     <div class="area" id="area">
-      <div class="head" id="head" style="top: 100px"></div>
       <div class="food" id="food"></div>
+      <div id="body"></div>
     </div>
-    <button onclick="changeDirection('up');" class="button is-danger is-inverted">Up</button>
-    <button onclick="changeDirection('down');" class="button is-danger is-inverted ">Down</button>
-    <button onclick="changeDirection('right');" class="button is-danger is-inverted">Right</button>
-    <button onclick="changeDirection('left');" class="button is-danger is-inverted">left</button>
-
+    <button
+      onclick="changeDirection('up');"
+      class="button is-danger is-inverted"
+    >
+    <i class="fa-solid fa-arrow-up-long"></i>
+    </button>
+    <button
+      onclick="changeDirection('down');"
+      class="button is-danger is-inverted"
+    >
+    <i class="fa-solid fa-arrow-down-long"></i>
+    </button>
+    <button
+      onclick="changeDirection('right');"
+      class="button is-danger is-inverted"
+    >
+    <i class="fa-solid fa-arrow-right-long"></i>
+    </button>
+    <button
+      onclick="changeDirection('left');"
+      class="button is-danger is-inverted"
+    >
+    <i class="fa-solid fa-arrow-left-long"></i>
+    </button>
     <script>
       const scale = 20;
-      const head = document.getElementById("head");
       const area = document.getElementById("area");
-
-      const areaWidth = 20;
+      const foodat = document.getElementById("food");
+      const areaWidth = 40;
       const areaHeight = 20;
+      let positionX = 5;
+      let positionY = 5;
+      const bodyCoordinates = [
+        { x: 7, y: 5 },
+        { x: 8, y: 5 },
+        { x: 9, y: 5 },
+        { x: 10, y: 5 },
+      ];
 
       const food = {
         x: 5,
@@ -54,7 +80,6 @@
       function resetGame() {
         area.style.width = `${areaWidth * scale}px`;
         area.style.height = `${areaHeight * scale}px`;
-        head.style.display = "block";
         render();
       }
 
@@ -79,10 +104,6 @@
             break;
         }
       }
-
-      let positionX = 5;
-      let positionY = 5;
-
       function changeDirection(value) {
         if (direction === "left" || direction === "right") {
           if (value === "up" || value === "down") {
@@ -100,32 +121,46 @@
         if (positionX > areaWidth - 1) {
           positionX = 0;
         }
-      }
+      };
       const goLeft = () => {
         positionX -= 1;
         if (positionX < 0) {
           positionX = areaWidth - 1;
         }
-      }
+      };
       const goDown = () => {
         positionY += 1;
         if (positionY > areaHeight - 1) {
           positionY = 0;
         }
-      }
+      };
       const goUp = () => {
         positionY -= 1;
         if (positionY < 0) {
           positionY = areaHeight - 1;
         }
-      }
-
+      };
+      const bodyContainer = document.getElementById("body");
       function render() {
         if (food.x === positionX && food.y === positionY) {
-          console.log("Swallowed food");
+          bodyCoordinates.unshift(bodyCoordinates[0]);
+
+          food.x = Math.floor(Math.random() * scale);
+          food.y = Math.floor(Math.random() * scale);
+          foodat.style.top = `${food.y * scale}px`;
+          foodat.style.left = `${food.x * scale}px`;
         }
-        head.style.left = `${positionX * scale}px`;
-        head.style.top = `${positionY * scale}px`;
+        let bodyHtml = "";
+        for (let i = 0; i < bodyCoordinates.length; i++) {
+          bodyHtml += `<div class="part" style="top: ${
+            bodyCoordinates[i].y * scale
+          }px;
+            left: ${bodyCoordinates[i].x * scale}px"></div>`;
+        }
+        bodyContainer.innerHTML = bodyHtml;
+        foodat.style.top = `${food.y * scale}px`;
+        foodat.style.left = `${food.x * scale}px`;
+
       }
 
       function gameLoop() {
@@ -143,11 +178,12 @@
             goLeft();
             break;
         }
+        bodyCoordinates.push({ x: positionX, y: positionY });
+        bodyCoordinates.shift();
         render();
       }
       resetGame();
-
-      let speed = 200;
+      let speed = 100;
       setInterval(gameLoop, speed);
     </script>
   </body>
