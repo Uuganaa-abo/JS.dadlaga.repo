@@ -13,80 +13,126 @@
       .area {
         background-color: rgb(199, 239, 203);
         position: relative;
+        display: none;
       }
       .part {
-        width: 10px;
-        height: 10px;
+        width: 15px;
+        height: 15px;
         background-color: black;
         position: absolute;
-        border-radius: 7px;
+        border-radius: 5px;
       }
       .food {
-        width: 10px;
-        height: 10px;
+        width: 15px;
+        height: 15px;
         background-color: red;
         position: absolute;
         border-radius: 10px;
       }
+      .start{
+        background-image: url(https://wallpapercave.com/wp/wp2409719.jpg);
+        background-size: cover;
+        width: 600px;
+        height: 600px;
+      }
+      .startButton{
+        margin-top: 200px;
+        margin-left: 150px;
+        border: 1px solid black;
+        width: 100px;
+        padding: 10px;
+        border-radius: 10px;
+      }
+      .button{
+        margin-top: 20px;
+      }
     </style>
   </head>
-  <body onkeydown="handleKeydown(event);">
-    <div class="container" class="mx-auto">
+  <body onkeydown="handleKeydown(event);" style="align-content: center">
+    <div class="container" style="margin: auto; width: 300px">
       <div class="area" id="area">
         <div class="food" id="food"></div>
         <div id="body"></div>
       </div>
+      <div id="start" class="start">
+        <button onclick="startGame();" class="startButton"><p class="title is-3">Start</p></button>
+      </div>
+
       <button
         onclick="changeDirection('up');"
-        class="button is-danger is-inverted"
+        class="button is-danger is-inverted is-large"
       >
         <i class="fa-solid fa-arrow-up-long"></i>
       </button>
       <button
         onclick="changeDirection('down');"
-        class="button is-danger is-inverted"
+        class="button is-danger is-inverted is-large"
       >
         <i class="fa-solid fa-arrow-down-long"></i>
       </button>
       <button
         onclick="changeDirection('right');"
-        class="button is-danger is-inverted"
+        class="button is-danger is-inverted is-large"
       >
         <i class="fa-solid fa-arrow-right-long"></i>
       </button>
       <button
         onclick="changeDirection('left');"
-        class="button is-danger is-inverted"
+        class="button is-danger is-inverted is-large"
       >
         <i class="fa-solid fa-arrow-left-long"></i>
       </button>
+      <button onclick="backGame();" id="back" class="button is-danger is-inverted is-large">Back</button>
     </div>
     <script>
-      const scale = 10;
+      const scale = 15;
       const area = document.getElementById("area");
       const foodat = document.getElementById("food");
       const areaWidth = 30;
       const areaHeight = 30;
-      let positionX = 5;
-      let positionY = 5;
-      const bodyCoordinates = [
+      let positionX = 10;
+      let positionY = 10;
+      let bodyCoordinates = [
         { x: 7, y: 5 },
         { x: 8, y: 5 },
         { x: 9, y: 5 },
         { x: 10, y: 5 },
       ];
+      const start = document.getElementById("start")
+      const back = document.getElementById("backGame")
 
       const food = {
         x: 5,
         y: 5,
       };
+      let score = 0;
+
+      function startGame(){
+        area.style.display = "block"
+        start.style.display = "none"
+      }
+      function backGame(){
+        area.style.display = "none"
+        start.style.display = "block"
+      }
 
       let direction = "up";
       function resetGame() {
+        score = 0;
         area.style.width = `${areaWidth * scale}px`;
         area.style.height = `${areaHeight * scale}px`;
-        render();
+        bodyCoordinates = [
+          { x: 7, y: 5 },
+          { x: 8, y: 5 },
+          { x: 9, y: 5 },
+          { x: 10, y: 5 },
+        ];
+        direction = "right";
+        positionX = 10;
+        positionY = 5;
+        generateFood();
       }
+
 
       function handleKeydown(event) {
         console.log(event.key);
@@ -108,6 +154,12 @@
             changeDirection("left");
             break;
         }
+      }
+      function generateFood() {
+        food.x = Math.floor(Math.random() * areaWidth);
+        food.y = Math.floor(Math.random() * areaHeight);
+        foodat.style.top = `${food.y * scale}px`;
+        foodat.style.left = `${food.x * scale}px`;
       }
       function changeDirection(value) {
         if (direction === "left" || direction === "right") {
@@ -149,11 +201,13 @@
       function render() {
         if (food.x === positionX && food.y === positionY) {
           bodyCoordinates.unshift(bodyCoordinates[0]);
-
-          food.x = Math.floor(Math.random() * scale);
-          food.y = Math.floor(Math.random() * scale);
-          foodat.style.top = `${food.y * scale}px`;
-          foodat.style.left = `${food.x * scale}px`;
+          generateFood();
+          score += 3;
+          speed = speed - 1;
+          clearInterval(interval);
+          console.log({ speed });
+          interval = setInterval(gameLoop, speed);
+          document.getElementById("score").innerText = score;
         }
         let bodyHtml = "";
         for (let i = 0; i < bodyCoordinates.length; i++) {
@@ -163,8 +217,6 @@
             left: ${bodyCoordinates[i].x * scale}px"></div>`;
         }
         bodyContainer.innerHTML = bodyHtml;
-        foodat.style.top = `${food.y * scale}px`;
-        foodat.style.left = `${food.x * scale}px`;
       }
 
       function gameLoop() {
@@ -182,13 +234,27 @@
             goLeft();
             break;
         }
+        for (let i = 0; i < bodyCoordinates.length; i++) {
+          if (
+            positionX === bodyCoordinates[i].x &&
+            positionY === bodyCoordinates[i].y
+          ) {
+            gameOver();
+            break;
+          }
+        }
         bodyCoordinates.push({ x: positionX, y: positionY });
         bodyCoordinates.shift();
         render();
       }
+      function gameOver() {
+        alert("Game Over!");
+        resetGame();
+      }
       resetGame();
-      let speed = 100;
+      let speed = 200;
       setInterval(gameLoop, speed);
+      let interval = setInterval(gameLoop, speed);
     </script>
   </body>
 </html>
