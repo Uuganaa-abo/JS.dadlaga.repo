@@ -5,63 +5,68 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
     <style>
       .area {
         background-color: rgb(199, 239, 203);
         position: relative;
       }
       .part {
-        width: 20px;
-        height: 20px;
+        width: 10px;
+        height: 10px;
         background-color: black;
         position: absolute;
         border-radius: 7px;
       }
       .food {
-        width: 20px;
-        height: 20px;
+        width: 10px;
+        height: 10px;
         background-color: red;
         position: absolute;
-       
+        border-radius: 10px;
       }
     </style>
   </head>
   <body onkeydown="handleKeydown(event);">
-    <div class="area" id="area">
-      <div class="food" id="food"></div>
-      <div id="body"></div>
+    <div class="container" class="mx-auto">
+      <div class="area" id="area">
+        <div class="food" id="food"></div>
+        <div id="body"></div>
+      </div>
+      <button
+        onclick="changeDirection('up');"
+        class="button is-danger is-inverted"
+      >
+        <i class="fa-solid fa-arrow-up-long"></i>
+      </button>
+      <button
+        onclick="changeDirection('down');"
+        class="button is-danger is-inverted"
+      >
+        <i class="fa-solid fa-arrow-down-long"></i>
+      </button>
+      <button
+        onclick="changeDirection('right');"
+        class="button is-danger is-inverted"
+      >
+        <i class="fa-solid fa-arrow-right-long"></i>
+      </button>
+      <button
+        onclick="changeDirection('left');"
+        class="button is-danger is-inverted"
+      >
+        <i class="fa-solid fa-arrow-left-long"></i>
+      </button>
     </div>
-    <button
-      onclick="changeDirection('up');"
-      class="button is-danger is-inverted"
-    >
-    <i class="fa-solid fa-arrow-up-long"></i>
-    </button>
-    <button
-      onclick="changeDirection('down');"
-      class="button is-danger is-inverted"
-    >
-    <i class="fa-solid fa-arrow-down-long"></i>
-    </button>
-    <button
-      onclick="changeDirection('right');"
-      class="button is-danger is-inverted"
-    >
-    <i class="fa-solid fa-arrow-right-long"></i>
-    </button>
-    <button
-      onclick="changeDirection('left');"
-      class="button is-danger is-inverted"
-    >
-    <i class="fa-solid fa-arrow-left-long"></i>
-    </button>
     <script>
-      const scale = 20;
+      const scale = 10;
       const area = document.getElementById("area");
       const foodat = document.getElementById("food");
-      const areaWidth = 40;
-      const areaHeight = 20;
+      const areaWidth = 30;
+      const areaHeight = 30;
       let positionX = 5;
       let positionY = 5;
       const bodyCoordinates = [
@@ -160,7 +165,6 @@
         bodyContainer.innerHTML = bodyHtml;
         foodat.style.top = `${food.y * scale}px`;
         foodat.style.left = `${food.x * scale}px`;
-
       }
 
       function gameLoop() {
